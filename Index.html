@@ -1,0 +1,385 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home Page</title>
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrape@5.3.3/dist/css/bootstrape.min.css">
+
+    <style>
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+        }
+
+        img{
+            width: 200px;
+            height: 220px;
+            object-fit: cover;
+            border-radius: 8px;
+        }
+
+        .sidebar{
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 240px;
+            height: 100vh;
+            background-color: #212519;
+            color: white;
+            padding-top: 20px;
+            z-index: 1000;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .sidebar-header{
+            font-size: 1.6rem;
+            font-weight: bold;
+            text-align: center;
+            padding: 15px;
+            border-bottom: 1px solid #444;
+        }
+
+        .sidebar-links{
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            margin-top: 20px;
+        }
+
+        .sidebar-links li{
+            width: 100%;
+        }
+
+        .sidebar-links a{
+            display: block;
+            padding: 12px 20px;
+            color: #ddd;
+            text-decoration: none;
+            transition: 0.3s;
+        }
+
+        .sidebar-links a:hover{
+            background-color: #0d6efd;
+            color: white;
+        }
+
+        .main-content{
+            margin-left: 240px;
+            padding: 20px;
+        }
+
+        .hero {
+            min-height: 80hv;
+            background: linear-gradient(rgba(0,0,0,0.55)), rgba(0,0,0,0.55);
+            color: white;
+            padding: 70px 20px;
+            align-items: center;
+        }
+
+        .promo-box {
+            background-color: #f8f9fa;
+            border-left: 5px solid #09ffff;
+            padding: 15px;
+            border-radius: 8px;
+            margin-top: 20px;
+            font-weight: 500;
+        }
+
+        .section-title{
+            font-weight: bold;
+            margin-bottom: 15px;
+        }
+
+        .product-card img{
+            height: 220px;
+            object-fit: cover;
+        }
+
+        .category-btn{
+            margin: 5px;
+        }
+
+        .category-card{
+            transition: 0.3s;
+        }
+
+        .category-card:hover{
+            transform: translateY(-5px);
+        }
+
+        footer{
+            background-color: #212519;
+            color: white;
+            padding: 30px 20px;
+            margin-top: 50px; 
+        }
+
+        .footer-link{
+            color: #1b0ceb;
+            text-decoration: none;
+        }
+
+        .footer-link:hover{
+            color: white;
+        }
+
+        .hidden-card{
+            display: none !important;
+        }
+
+         @media (max-width: 768px){
+            .sidebar{
+                width: 200px;
+            }
+
+            .main-content{
+                max-width: 200px;
+            }
+
+            .hero{
+                max-width: 200px;
+            }
+
+            footer{
+                max-width: 200px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <nav class="sidebar">
+        <div class="side-header">
+            SlothShop
+        </div>
+
+        <ul class="sidebar-links">
+            <li class="nav-item"><a href="Index.html">Home</a></li>
+                    <li ><a href="products.html">Products</a></li>
+                    <li ><a href="cart.html">Cart</a></li>
+                    <li ><a href="checkout.html">Checkout</a></li>
+                    <li ><a href="login.html">Login</a></li>
+                    <li ><a href="register.html">Register</a></li>
+                    <li ><a href="profile.html">Profile</a></li>
+                    <li ><a href="about.html">About</a></li>
+                    <li ><a href="contact.html">Contact</a></li>
+        </ul>
+    </nav>
+
+    <div class="main-content">
+        <section class="hero">
+        <div class="container text-center text-lg-start">
+            <div class="row align-items-center">
+                <div class="col-lg-7">
+                    <h1>Shop Smart, Live better</h1>
+                    <p class="my-4">
+                       Discover the latest fashion, electronics, and accessories at unbeatable prices.
+                    </p>
+                    <a href="products.html" class="btn btn-primary btn-lg me-2">Shop Now</a>
+                    <a href="about.html" class="btn btn-outline-light btn-lg">Learn More</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="py-5">
+        <div class="container">
+            <h2 class="section-title text-center">Featured Products</h2>
+
+            <div class="row g-4">
+                <div class="col-md-6 col-lg-3">
+                    <div class="card product-card h-100 shadow-sm">
+                        <img src="https://images.unsplash.com/photo-1542291026-7eec264c27ff?q=80&w=1000&auto=format&fit=crop" class="card-img-top" alt="Running Shoes">
+                        <div class="card-body d-flex flex-column">
+                            <h5 class="card-title">Running Shoes</h5>
+                            <p class="card-text">Comfortable and stylish shoes.</p>
+                            <p class="fw-bold text-primary">$79.99</p>
+                            <a href="prodcut-details.html" class="btn btn-outline-primary mt-auto">View Details</a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-6 col-lg-3">
+                    <div class="card product-card h-100 shadow-sm">
+                        <img src="https://images.unsplash.com/photo-1511707171634-5f897ff02aa9?q=80&w=1000&auto=format&fit=crop" class="card-img-top" alt="Smartphone">
+                        <div class="card-body d-flex flex-column">
+                            <h5 class="card-title">Smartphone</h5>
+                            <p class="card-text">Modern Smartphone with powerful features.</p>
+                            <p class="fw-bold text-primary">$499.99</p>
+                            <a href="prodcut-details.html" class="btn btn-outline-primary mt-auto">View Details</a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-6 col-lg-3">
+                    <div class="card product-card h-100 shadow-sm">
+                        <img src="https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?q=80&w=1000&auto=format&fit=crop" class="card-img-top" alt="T-Shirt">
+                        <div class="card-body d-flex flex-column">
+                            <h5 class="card-title">Casual T-Shirt</h5>
+                            <p class="card-text">Simple and trendy t-shirt.</p>
+                            <p class="fw-bold text-primary">$24.99</p>
+                            <a href="prodcut-details.html" class="btn btn-outline-primary mt-auto">View Details</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="py-5 bg-light">
+        <div class="container">
+            <h2 class="section-title text-center">Shop by Category</h2>
+
+            <div class="text-center mb-4">
+                <button class="btn btn-dark category-btn" onclick="filterCategory('all')">All</button>
+                <button class="btn btn-outline-dark category-btn" onclick="filterCategory('fashion')">Fashion</button>
+                <button class="btn btn-outline-dark category-btn" onclick="filterCategory('electronics')">Electronics</button>
+                <button class="btn btn-outline-dark category-btn" onclick="filterCategory('accessories')">Accessories</button>
+            </div>
+
+            <div class="row g-4">
+                <div class="col-md-6 col-lg-4 category-item fashion">
+                     <div class="card category-card shadow-sm h-100">
+                        <img src="https://images.unsplash.com/photo-1445205170230-053b83016050?q=80&w=1000&auto=format&fit=crop" class="card-img-top" alt="Fashion">
+                        <div class="card-body">
+                            <h5 class="card-title">Fashion Collection</h5>
+                            <p class="card-text">Explore the latest trends in clothes and style.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-6 col-lg-4 category-item electronics">
+                     <div class="card category-card shadow-sm h-100">
+                        <img src="https://images.unsplash.com/photo-1519389950473-47ba0277781c?q=80&w=1000&auto=format&fit=crop" class="card-img-top" alt="Electronics">
+                        <div class="card-body">
+                            <h5 class="card-title">Electrioncs</h5>
+                            <p class="card-text">Find modern devices and must have technology.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-6 col-lg-4 category-item accessories">
+                     <div class="card category-card shadow-sm h-100">
+                        <img src="https://images.unsplash.com/3/www.madebyvadim.com.jpg?q=80&w=1182&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" class="card-img-top" alt="Accessories">
+                        <div class="card-body">
+                            <h5 class="card-title">Accessories</h5>
+                            <p class="card-text">Complete your look with stylish accessories.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-6 col-lg-4 category-item electronics">
+                     <div class="card category-card shadow-sm h-100">
+                        <img src="https://images.unsplash.com/photo-1525547719571-a2d4ac8945e2?q=80&w=764&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" class="card-img-top" alt="Laptop">
+                        <div class="card-body">
+                            <h5 class="card-title">Laptops</h5>
+                            <p class="card-text">Powerful laptops for work, school, and gaming.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-6 col-lg-4 category-item fashion">
+                     <div class="card category-card shadow-sm h-100">
+                        <img src="https://images.unsplash.com/photo-1611312449408-fcece27cdbb7?q=80&w=669&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" class="card-img-top" alt="Jackets">
+                        <div class="card-body">
+                            <h5 class="card-title">Jackets</h5>
+                            <p class="card-text">stay warm and stylish with our jacket collection.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-6 col-lg-4 category-item accessories">
+                     <div class="card category-card shadow-sm h-100">
+                        <img src="https://images.unsplash.com/photo-1523170335258-f5ed11844a49?q=80&w=1000&auto=format&fit=crop" class="card-img-top" alt="Watches">
+                        <div class="card-body">
+                            <h5 class="card-title">Watches</h5>
+                            <p class="card-text">elegant watches designed for every occasion.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="py-5">
+        <div class="container">
+            <div class="row-g-4 align-items-center">
+                <div class="col-lg-6">
+                    <img src="https://images.unsplash.com/photo-1607082349566-187342175e2f?q=80&w=1200&auto=format&fit=crop" class="img-fluid rounded shadow" alt="Special Offer">
+                </div>
+                <div class="col-lg-6">
+                    <h2 class="section-title">Limited Time Offer</h2>
+                    <p>Get exclusive deals on selected products this week only.</p>
+                    <a href="products.html" class="btn btn-primary">Browse Products</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <div class="row text-center text-md-start">
+                <div class="col-md-4 mb-3">
+                    <h5>Sloth shop</h5>
+                    <p>Your trusted online store for fashion, electronics, and more.</p>
+                </div>
+
+                <div class="col-md-4 mb-3">
+                    <h5>Quick Links</h5>
+                    <p><a href="Index.html" class="footer-link">Home</a></p>
+                    <p><a href="products.html" class="footer-link">Products</a></p>
+                    <p><a href="about.html" class="footer-link">About</a></p>
+                    <p><a href="contact.html" class="footer-link">Contact</a></p>
+                </div>
+
+                <div class="col-md-4 mb-3">
+                    <h5>Contacts</h5>
+                    <p>Email: support@slothshop.com</p>
+                    <p>Phone: +1 234 567 890</p>
+                    <p>Loction: Montreal, Canada</p>
+                </div>
+            </div>
+
+            <hr class="border-light">
+            <p class="text-center mb-0">&copy; 2026 SlothShop. All rights Reserved.</p>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrape@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
+    <script>
+        const promoMessage = [
+            "Big Sale Today - Up to 50% off selected items!",
+            "Free shipping on orders over $100!",
+            "New arrivals are now avalible - Shop the latest trends!",
+            "Register today and get exclusive member discounts!"
+        ];
+
+        let promoIndex = 0;
+        const promoBanner = document.getElementById("promoBanner");
+
+        setInterval(() => {
+            promoIndex++;
+            if (promoIndex >= promoMessage.length){
+                promoIndex = 0;
+            }
+            promoBanner.textContent = promoMessage[promoIndex];
+        }, 3000);
+
+        //filter
+        function filterCategory(category) {
+            const items = document.querySelectorAll(".category-item");
+
+            items.forEach(item => {
+                if (category === "all" || item.classList.contains(category)){
+                    item.classList.remove("hidden-card");
+                } else {
+                    item.classList.add("hidden-card");
+                }
+            });
+        }
+    </script>
+    </div>
+</body>
+</html>
