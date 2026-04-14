@@ -1,0 +1,331 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SlothShop - Product Details</title>
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrape@5.3.3/dist/css/bootstrape.min.css">
+
+    <style>
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            background-color: #f8f9fa;
+        }
+
+        .sidebar{
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 240px;
+            height: 100vh;
+            background-color: #212519;
+            color: white;
+            padding-top: 20px;
+            z-index: 1000;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .sidebar-header{
+            font-size: 1.6rem;
+            font-weight: bold;
+            text-align: center;
+            padding: 15px;
+            border-bottom: 1px solid #444;
+        }
+
+        .sidebar-links{
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            margin-top: 20px;
+        }
+
+        .sidebar-links li{
+            width: 100%;
+        }
+
+        .sidebar-links a{
+            display: block;
+            padding: 12px 20px;
+            color: #ddd;
+            text-decoration: none;
+            transition: 0.3s;
+        }
+
+        .sidebar-links a:hover{
+            background-color: #0d6efd;
+            color: white;
+        }
+
+        .main-content{
+            margin-left: 240px;
+            padding: 20px;
+        }
+
+        .product-section {
+            padding: 60px 0;
+        }
+
+        .product-image{
+            width: 100%;
+            border-radius: 12px;
+            object-fit: cover;
+            max-height: 500px;
+        }
+
+        .price {
+            font-size: 1.8rem;
+            font-weight: bold;
+            color: #0d6efd;
+        }
+
+        .old-price {
+            text-decoration: line-through;
+            color: #6c757d;
+            margin-left: 10px;
+            font-size: 1rem;
+        }
+
+        .info-box {
+            background: white;
+            border-radius: 12px;
+            padding: 25px;
+            box-shadow: 0 2px 12px rgba(0,0,0,0.08);
+        }
+
+        .feature-badge{
+            margin-right: 8px;
+            margin-bottom: 8px;
+        }
+
+        .qty-box {
+            max-width: 140px;
+        }
+
+        .summary-box{
+            background-color: #eef4ff;
+            border: 1px solid #cfe2ff;
+            border-radius: 10px;
+            padding: 15px;
+            margin-top: 20px;
+        }
+
+        footer{
+            background-color: #212519;
+            color: white;
+            padding: 30px 20px;
+            margin-top: 50px; 
+        }
+
+        .footer-link{
+            color: #1b0ceb;
+            text-decoration: none;
+        }
+
+        .footer-link:hover{
+            color: white;
+        }
+
+         @media (max-width: 768px){
+            .sidebar{
+                width: 200px;
+            }
+
+            .main-content{
+                max-width: 200px;
+            }
+
+            footer{
+                max-width: 200px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <nav class="sidebar">
+        <div class="side-header">
+            SlothShop
+        </div>
+
+        <ul class="sidebar-links">
+            <li class="nav-item"><a href="Index.html">Home</a></li>
+                    <li ><a href="products.html">Products</a></li>
+                    <li ><a href="product-details.html">Products</a></li>
+                    <li ><a href="cart.html">Cart</a></li>
+                    <li ><a href="checkout.html">Checkout</a></li>
+                    <li ><a href="login.html">Login</a></li>
+                    <li ><a href="register.html">Register</a></li>
+                    <li ><a href="profile.html">Profile</a></li>
+                    <li ><a href="about.html">About</a></li>
+                    <li ><a href="contact.html">Contact</a></li>
+        </ul>
+    </nav>
+
+    <div class="main-content">
+        <section class="product-section">
+        <div class="container">
+            <div class="row g-4 align-items-center">
+
+                <div class="col-lg-6">
+                    <div class="info-box">
+                        <span class="badge bg-success mb-3">In Stock</span>
+                        <h1 class="mb-3">Smartphone Pro X</h1>
+                        <p class="text-muted">
+                            A premium smartphone designed for speed, style, and preformance.
+                            Enjoy a crystal-clear display, powerful camera system, long battery life,
+                            and advanced features for daily use.
+                        </p>
+
+                        <div class="mb-3">
+                            <span class="badge text-bg-primary feature-badge">128GB Storage</span>
+                            <span class="badge text-bg-secondary feature-badge">6.7" Display</span>
+                            <span class="badge text-bg-dark feature-badge">5G Ready</span>
+                            <span class="badge text-bg-info feature-badge">Fast Charging</span>
+                        </div>
+
+                        <div class="mb-3">
+                            <label for="quantity" class="form-label fw-bold">Quantity</label>
+                            <input type="number"
+                            id="quantity"
+                            class="form-control qty-box"
+                            min="1"
+                            value="1">
+                        </div>
+
+                        <div class="summary-box">
+                            <h5>Order Summary</h5>
+                            <p class="mb-1">Product: <strong>Smartphone Pro X</strong></p>
+                            <p class="mb-1">Unit Price: <strong>$499.99</strong></p>
+                            <p class="mb-0">Total Price: <strong id="totalPrice">$499.99</strong></p>
+                        </div>
+
+                        <div class="d-grid gap-2 d-md-flex mt-4">
+                            <button class="btn btn-primary btn-lg" onclick="addToCart()">Add to Cart</button>
+                            <button class="btn btn-outline-danger btn-lg" onclick="addToWishlist()">Add to Wishlist</button>
+                        </div>
+
+                        <div class="mt-4">
+                            <h5>Description</h5>
+                            <p>
+                                This smartphone is perfect for users who want excellent preformance,
+                                 sleek design, and reliable battery life. With its advanced camera,
+                                large storage, and modern interface, it is an ideal choice for work,
+                                entertainment, and everday communication.
+                            </p>
+                        </div>
+
+                        <div class="mt-4">
+                            <h5>Specifications</h5>
+                            <ul>
+                                <li>Display: 6.7-inch AMOLED</li>
+                                <li>Storage: 128GB</li>
+                                <li>Camera: 48MP Triple Camera</li>
+                                <li>Battery: 5000mAh</li>
+                                <li>Connectivity: 5G / Wi-Fi / Bluetooth</li>
+                            </ul>
+                        </div>
+
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <div class="row text-center text-md-start">
+                <div class="col-md-4 mb-3">
+                     <h5>Sloth shop</h5>
+                    <p>Your trusted online store for fashion, electronics, and more.</p>
+                </div>
+
+                <div class="col-md-4 mb-3">
+                        <h5>Quick Links</h5>
+                        <p><a href="Index.html" class="footer-link">Home</a></p>
+                        <p><a href="products.html" class="footer-link">Products</a></p>
+                        <p><a href="about.html" class="footer-link">About</a></p>
+                        <p><a href="contact.html" class="footer-link">Contact</a></p>
+                </div>
+
+                <div class="col-md-4 mb-3">
+                        <h5>Contacts</h5>
+                        <p>Email: support@slothshop.com</p>
+                        <p>Phone: +1 234 567 890</p>
+                        <p>Loction: Montreal, Canada</p>
+                </div>
+            </div>
+            <hr class="border-light">
+            <p class="text-center mb-0">&copy; 2026 SlothShop. All rights Reserved.</p>
+        </div>
+    </footer>
+
+    <script src="storage.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrape@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
+    <script>
+        const quantityInput = document.getElementById("quantity");
+        const totalPriceElement = document.getElementById("totalPrice");
+        const unitPrice =499.99;
+
+        function updateTotalPrice(){
+            let quantity = parseInt(quantityInput.value);
+
+            if (isNaN(quantity) || quantity < 1) {
+                quantity = 1;
+                quantityInput.value = 1;
+            }
+
+            const total = unitPrice * quantity;
+            totalPriceElement.textContent = "$" + total.toFixed(2);
+        }
+
+        quantityInput.addEventListener("input", updateTotalPrice);
+
+        function addToCart(){
+            let quantity = parseInt(quantityInput.value);
+
+            if (isNaN(quantity) || quantity < 1) {
+                quantity = 1;
+            }
+
+            const product = {
+                name: "Smartphone Pro X",
+                price: unitPrice,
+                Quantity: quantity,
+                image: "https://images.unsplash.com/photo-1511707171634-5f897ff02aa9?q=80&w=1200&auto=format&fit=crop"
+            };
+
+            let cart = JSON.parse(localStorage.getItem("cart")) || [];
+
+            const existingProductIndex = cart.findIndex(item => item.name === product.name);
+
+            if(existingProductIndex !== -1) {
+                cart[existingProductIndex].quantity += quantity;
+            } else {
+                cart.push(product);
+            }
+
+            localStorage.setItem("cart", JSON.stringify(cart));
+            alert("Product added to cart successfully.");
+        }
+
+        function addToWishList(){
+            let wishlist = JSON.parse(localStorage,getItem("wishlist")) || [];
+
+            if (!wishlist.includes("Smartphone Pro X")) {
+                wishlist.push("Smartphone Pro X");
+                localStorage.setItem("wishlist", JSON.stringify(wishlist));
+                alert("Product added to wishlist.");
+            } else {
+                alert("This product is already in your wishlist.");
+            }
+        }
+
+        updateTotalPrice();
+    </script>
+    </div>
+</body>
+</html>

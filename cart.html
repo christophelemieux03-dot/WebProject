@@ -1,0 +1,381 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SlothShop - Cart</title>
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrape@5.3.3/dist/css/bootstrape.min.css">
+
+    <style>
+         body {
+            font-family: Arial, Helvetica, sans-serif;
+        }
+
+        .sidebar{
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 240px;
+            height: 100vh;
+            background-color: #212519;
+            color: white;
+            padding-top: 20px;
+            z-index: 1000;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .sidebar-header{
+            font-size: 1.6rem;
+            font-weight: bold;
+            text-align: center;
+            padding: 15px;
+            border-bottom: 1px solid #444;
+        }
+
+        .sidebar-links{
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            margin-top: 20px;
+        }
+
+        .sidebar-links li{
+            width: 100%;
+        }
+
+        .sidebar-links a{
+            display: block;
+            padding: 12px 20px;
+            color: #ddd;
+            text-decoration: none;
+            transition: 0.3s;
+        }
+
+        .sidebar-links a:hover{
+            background-color: #0d6efd;
+            color: white;
+        }
+
+        .main-content{
+            margin-left: 240px;
+            padding: 20px;
+        }
+
+        .page-header {
+            min-height: 80hv;
+            background: linear-gradient(rgba(0,0,0,0.55)), rgba(0,0,0,0.55);
+            color: white;
+            padding: 70px 20px;
+            align-items: center;
+        }
+
+        .cart-section{
+            padding: 50px 0;
+        }
+
+        .cart-box,
+        .summary-box{
+            background: white;
+            border-radius: 12px;
+            padding: 25px;
+            box-shadow: 0 2px 12px rgba(0,0,0,0.08);
+        }
+
+        .cart-product-img {
+            width: 70px;
+            height: 70px;
+            object-fit: cover;
+            border-radius: 8px;
+        }
+
+        .quantity-input {
+            width: 80px;
+        }
+
+        .empty-cart {
+            text-align: center;
+            padding: 50px 20px;
+            color: #6c757d;
+        }
+
+        footer{
+            background-color: #212519;
+            color: white;
+            padding: 30px 20px;
+            margin-top: 50px; 
+        }
+
+        .footer-link{
+            color: #1b0ceb;
+            text-decoration: none;
+        }
+
+        .footer-link:hover{
+            color: white;
+        }
+
+         @media (max-width: 768px){
+            .sidebar{
+                width: 200px;
+            }
+
+            .main-content{
+                max-width: 200px;
+            }
+
+            .page-header{
+                max-width: 200px;
+            }
+
+            footer{
+                max-width: 200px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <nav class="sidebar">
+        <div class="side-header">
+            SlothShop
+        </div>
+
+        <ul class="sidebar-links">
+            <li class="nav-item"><a href="Index.html">Home</a></li>
+                    <li ><a href="products.html">Products</a></li>
+                    <li ><a href="cart.html">Cart</a></li>
+                    <li ><a href="checkout.html">Checkout</a></li>
+                    <li ><a href="login.html">Login</a></li>
+                    <li ><a href="register.html">Register</a></li>
+                    <li ><a href="profile.html">Profile</a></li>
+                    <li ><a href="about.html">About</a></li>
+                    <li ><a href="contact.html">Contact</a></li>
+        </ul>
+    </nav>
+
+    <div class="main-content">
+        <section class="page-header">
+        <div class="container">
+            <h1 class="fw-bold">Your Shopping Cart</h1>
+            <p class="mb-0">Review your selected products before checkout</p>
+        </div>
+    </section>
+
+    <section class="cart-section">
+        <div class="container">
+            <div class="row-g-4">
+
+                <div class="col-lg-8">
+                    <div class="cart-box">
+                        <h3 class="mb-4">Cart Items</h3>
+
+                        <div class="table-responsive">
+                            <table class="table align-middle" id="cartTable">
+                                <thead class="table-light">
+                                    <tr>
+                                        <th>Product</th>
+                                        <th>Price</th>
+                                        <th>Quantity</th>
+                                        <th>Total</th>
+                                        <th>Action</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="cartItems"></tbody>
+                            </table>
+                        </div>
+
+                        <div id="emptyCartMessage" class="empty-cart d-none">
+                            <h4>Your cart is empty</h4>
+                            <p>Add Products to your cart to see them here.</p>
+                            <a href="products.html" class="btn btn-primary">Continue Shopping</a>
+                        </div>
+
+                        <div class="mt-3 d-flex flex-wrap gap-2">
+                            <button class="btn btn-outline-danger" onclick="clearCart()">Clear Cart</button>
+                            <a href="products.html" class="btn btn-outline-secondary">Continue Shopping</a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-lg-4">
+                    <div class="summary-box">
+                        <h3 class="mb-4">Order Summary</h3>
+
+                        <div class="d-flex justify-content-between mb-2">
+                            <span>Items</span>
+                            <span id="itemCount">0</span>
+                        </div>
+
+                        <div class="d-flex justify-content-between mb-2">
+                            <span>Subtotal</span>
+                            <span id="subtotalPrice">$0.00</span>
+                        </div>
+
+                        <div class="d-flex justify-content-between mb-2">
+                            <span>Shipping</span>
+                            <span id="shippingPrice">$15.00</span>
+                        </div>
+
+                        <hr>
+
+                        <div class="d-flex justify-content-between fw-bold fs-5 mb-4">
+                            <span>Grand Total</span>
+                            <span id="grandTotal">$0.00</span>
+                        </div>
+
+                        <a href="checkout.html" class="btn btn-primary w-100" id="checkoutButton">Proceed to Checkout</a>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <div class="row text-center text-md-start">
+                <div class="col-md-4 mb-3">
+                     <h5>Sloth shop</h5>
+                    <p>Your trusted online store for fashion, electronics, and more.</p>
+                </div>
+
+                <div class="col-md-4 mb-3">
+                        <h5>Quick Links</h5>
+                        <p><a href="Index.html" class="footer-link">Home</a></p>
+                        <p><a href="products.html" class="footer-link">Products</a></p>
+                        <p><a href="about.html" class="footer-link">About</a></p>
+                        <p><a href="contact.html" class="footer-link">Contact</a></p>
+                </div>
+
+                <div class="col-md-4 mb-3">
+                        <h5>Contacts</h5>
+                        <p>Email: support@slothshop.com</p>
+                        <p>Phone: +1 234 567 890</p>
+                        <p>Loction: Montreal, Canada</p>
+                </div>
+            </div>
+            <hr class="border-light">
+            <p class="text-center mb-0">&copy; 2026 SlothShop. All rights Reserved.</p>
+        </div>
+    </footer>
+
+
+    <script src="storage.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrape@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
+    <script>
+        const cartItemsContainer = document.getElementById("catItems");
+        const itemCountElement = document.getElementById("itemCount");
+        const subtotalPriceElement = document.getElementById("subtotalPrice");
+        const shippingPriceElement = document.getElementById("shippingPrice");
+        const grandTotalElement = document.getElementById("grandTotal");
+        const emptyCartMessage = document.getElementById("emptyCartMessage");
+        const cartTable = document.getElementById("cartTable");
+        const checkoutButton = document.getElementById("checkoutButton");
+
+        const shippingCost = 15.00;
+
+        function getCart(){
+            return JSON.parse(localStorage.getItem("cart")) || [];
+        }
+
+        function saveCart(cart){
+            localStorage.setItem("cart", JSON.stringify(cart));
+        }
+
+        function renderCart(){
+            const cart = getCart();
+            cartItemsContainer.innerHTML ="";
+
+            if (cart.length === 0) {
+                cartTable.classList.add("d-none");
+                emptyCartMessage.classList.remove("d-none");
+                itemCountElement.textContent = "0";
+                subtotalPriceElement.textContent = "$0.00";
+                grandTotalElement.textContent = "$0.00";
+                checkoutButton.classList.add("disabled");
+                checkoutButton.setAttribute("aria-disabled", "true");
+                return;
+            }
+
+            cartTable.classList.remove("d-none");
+            emptyCartMessage.classList.add("d-none");
+            checkoutButton.classList.remove("disabled");
+            checkoutButton.removeAttribute("aria-disabled");
+
+            let totalItems = 0;
+            let subtotal = 0;
+
+            cart.forEach((item, index) => {
+                const itemTotal = item.price * item.quantity;
+                totalItems += item.quantity;
+                subtotal += itemTotal;
+
+                const row = document.createElement("tr");
+                row.innerHTML = `
+                    <td>
+                        <div class="d-flex align-items-center gap-3">
+                            <img src="${item.image}" alt="${item.name}" class="cart-product-img">
+                            <div>
+                                <h6 class="mb-1">${item.name}</h6>
+                                <small class="text-muted">Selected product</small>
+                            </div>
+                        </div>
+                    </td>
+                    <td>
+                        <input
+                            type="number"
+                            min="1"
+                            value="${item.quantity}"
+                            class="form-control quantity-input"
+                            onchange="updateQuantity(${index}, this.value)">
+                    </td>
+                    <td>$${itemTotal.toFixed(2)}</td>
+                    <td>
+                        <button class="btn btn-sm btn-danger" onclick="removeItem(${index})">Remove</button>
+                    </td>
+                `;
+                cartItemsContainer.appendChild(row);
+            });
+
+            itemCountElement.textContent = totalItems;
+            subtotalPriceElement.textContent = "$" + subtotal.toFixed(2);
+
+            const grandTotal = subtotal + shippingCost;
+            grandTotalElement.textContent = "$" + grandTotal.toFixed(2);
+        }
+
+        function updateQuantity(index, newQuantity){
+            let cart = getCart();
+            let quantity = parseInt(newQuantity);
+
+            if (isNaN(quantity) || quantity < 1){
+                quantity = 1;
+            }
+
+            cart[index].quantity = quantity;
+            saveCart(cart);
+            renderCart();
+        }
+
+        function removeItem(index){
+            let cart = getCart();
+            cart.splice(index, 1);
+            saveCart(cart);
+            renderCart();
+        }
+
+        function clearCart(){
+            const confirmClear = confirm("Are you sure you want to clear your cart?");
+            if (confirmClear){
+                localStorage.removeItem("cart");
+                renderCart();
+            }
+        }
+
+        renderCart();
+    </script>
+    </div>
+</body>
+</html>

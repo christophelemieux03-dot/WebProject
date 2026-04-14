@@ -1,0 +1,407 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SlothShop - Checkout</title>
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrape@5.3.3/dist/css/bootstrape.min.css">
+
+    <style>
+         body {
+            font-family: Arial, Helvetica, sans-serif;
+        }
+
+        .sidebar{
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 240px;
+            height: 100vh;
+            background-color: #212519;
+            color: white;
+            padding-top: 20px;
+            z-index: 1000;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .sidebar-header{
+            font-size: 1.6rem;
+            font-weight: bold;
+            text-align: center;
+            padding: 15px;
+            border-bottom: 1px solid #444;
+        }
+
+        .sidebar-links{
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            margin-top: 20px;
+        }
+
+        .sidebar-links li{
+            width: 100%;
+        }
+
+        .sidebar-links a{
+            display: block;
+            padding: 12px 20px;
+            color: #ddd;
+            text-decoration: none;
+            transition: 0.3s;
+        }
+
+        .sidebar-links a:hover{
+            background-color: #0d6efd;
+            color: white;
+        }
+
+        .main-content{
+            margin-left: 240px;
+            padding: 20px;
+        }
+
+        .page-header {
+            min-height: 80hv;
+            background: linear-gradient(rgba(0,0,0,0.55)), rgba(0,0,0,0.55);
+            color: white;
+            padding: 70px 20px;
+            align-items: center;
+        }
+
+        .checkout-section{
+            padding: 50px 0;
+        }
+
+        .form-box,
+        .summary-box,
+        .success-box{
+            background: white;
+            border-radius: 12px;
+            padding: 25px;
+            box-shadow: 0 2px 12px rgba(0,0,0,0.08);
+        }
+
+        .product-row{
+            border-bottom: 1px solid #e9ecef;
+            padding:  10px 0;
+        }
+
+        .product-row:last-child{
+            border-bottom: none;
+        }
+
+        .success-box{
+            display: none;
+            text-align: center;
+        }
+
+        footer{
+            background-color: #212519;
+            color: white;
+            padding: 30px 20px;
+            margin-top: 50px; 
+        }
+
+        .footer-link{
+            color: #1b0ceb;
+            text-decoration: none;
+        }
+
+        .footer-link:hover{
+            color: white;
+        }
+
+         @media (max-width: 768px){
+            .sidebar{
+                width: 200px;
+            }
+
+            .main-content{
+                max-width: 200px;
+            }
+
+            .page-header{
+                max-width: 200px;
+            }
+
+            footer{
+                max-width: 200px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <nav class="sidebar">
+        <div class="side-header">
+            SlothShop
+        </div>
+
+        <ul class="sidebar-links">
+            <li class="nav-item"><a href="Index.html">Home</a></li>
+                    <li ><a href="products.html">Products</a></li>
+                    <li ><a href="cart.html">Cart</a></li>
+                    <li ><a href="checkout.html">Checkout</a></li>
+                    <li ><a href="login.html">Login</a></li>
+                    <li ><a href="register.html">Register</a></li>
+                    <li ><a href="profile.html">Profile</a></li>
+                    <li ><a href="about.html">About</a></li>
+                    <li ><a href="contact.html">Contact</a></li>
+        </ul>
+    </nav>
+
+    <div class="main-content">
+        <section class="page-header">
+        <div class="container">
+            <h1 class="fw-bold">Checkout</h1>
+            <p class="mb-0">Complete your order securly</p>
+        </div>
+    </section>
+
+    <section class="checkout-section">
+        <div class="container">
+            <div class="row g-4" id="checkoutContent">
+
+                <div class="col-lg-7">
+                    <div class="form-box">
+                        <h3 class="mb-4">Billing Details</h3>
+
+                        <form id="checkoutForm">
+                            <div class="row g-3">
+                                <div class="col-md-6">
+                                    <label for="firstName" class="form-label">First Name</label>
+                                    <input type="text" class="form-control" id="firstName" required>
+                                </div>
+
+                                <div class="col-md-6">
+                                    <label for="lastName" class="form-label">Last Name</label>
+                                    <input type="text" class="form-control" id="lastName" required>
+                                </div>
+
+                                <div class="col-md-6">
+                                    <label for="email" class="form-label">Email Address</label>
+                                    <input type="email" class="form-control" id="email" required>
+                                </div>
+
+                                <div class="col-md-6">
+                                    <label for="phone" class="form-label">Phone Number</label>
+                                    <input type="tel" class="form-control" id="phone" required>
+                                </div>
+
+                                <div class="col-md-6">
+                                    <label for="address" class="form-label">Street Address</label>
+                                    <input type="text" class="form-control" id="address" required>
+                                </div>
+
+                                <div class="col-md-6">
+                                    <label for="city" class="form-label">City</label>
+                                    <input type="text" class="form-control" id="city" required>
+                                </div>
+
+                                <div class="col-md-6">
+                                    <label for="province" class="form-label">Province</label>
+                                    <input type="text" class="form-control" id="province" required>
+                                </div>
+
+                                <div class="col-md-6">
+                                    <label for="postal" class="form-label">Postal Code</label>
+                                    <input type="text" class="form-control" id="postal" required>
+                                </div>
+
+                                <div class="col-12">
+                                    <label for="paymentMethod" class="form-label">Payment Method</label>
+                                    <select class="form-select" id="paymentMethod" required>
+                                        <option value="">Select payment method</option>
+                                        <option value="Credit Card">Credit Card</option>
+                                        <option value="Debit Card">Debit Card</option>
+                                        <option value="PayPal">PayPal</option>
+                                        <option value="Cash on Delivery">Cash on Delivery</option>
+                                    </select>
+                                </div>
+
+                                <div class="col-12">
+                                    <label for="notes" class="form-label">Order Notes</label>
+                                    <textarea class="form-control" id="notes" rows="4" placeholder="Optional notes about your order"></textarea>
+                                </div>
+
+                                <div class="col-12">
+                                    <button type="submit" class="btn btn-primary btn-lg w-100">Place Order</button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+
+                    <div class="success-box mt-4" id="successBox">
+                        <h3 class="text-success mb-3">Order Placed successfully</h3>
+                        <p>Your order has been confirmed. Thank you for shopping with SlothShop.</p>
+                        <a href="Index.html" class="btn btn-primary mt-2">Return to Home</a>
+                    </div>
+                </div>
+
+                <div class="col-lg-5">
+                    <div class="summary-box">
+                        <h3 class="mb-4">Order Summary</h3>
+
+                        <div id="orderItems"></div>
+
+                        <hr>
+
+                        <div class="d-flex justify-content-between mb-2">
+                            <span>Items</span>
+                            <span id="itemCount">0</span>
+                        </div>
+
+                        <div class="d-flex justify-content-between mb-2">
+                            <span>Subtotal</span>
+                            <span id="subtotalPrice">$0.00</span>
+                        </div>
+
+                        <div class="d-flex justify-content-between mb-2">
+                            <span>Shipping</span>
+                            <span id="shippingPrice">$15.00</span>
+                        </div>
+
+                        <hr>
+
+                        <div class="d-flex justify-content-between fw-bold fs-5 mb-4">
+                            <span>Grand Total</span>
+                            <span id="grandTotal">$0.00</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <div class="row text-center text-md-start">
+                <div class="col-md-4 mb-3">
+                     <h5>Sloth shop</h5>
+                    <p>Your trusted online store for fashion, electronics, and more.</p>
+                </div>
+
+                <div class="col-md-4 mb-3">
+                        <h5>Quick Links</h5>
+                        <p><a href="Index.html" class="footer-link">Home</a></p>
+                        <p><a href="products.html" class="footer-link">Products</a></p>
+                        <p><a href="about.html" class="footer-link">About</a></p>
+                        <p><a href="contact.html" class="footer-link">Contact</a></p>
+                </div>
+
+                <div class="col-md-4 mb-3">
+                        <h5>Contacts</h5>
+                        <p>Email: support@slothshop.com</p>
+                        <p>Phone: +1 234 567 890</p>
+                        <p>Loction: Montreal, Canada</p>
+                </div>
+            </div>
+            <hr class="border-light">
+            <p class="text-center mb-0">&copy; 2026 SlothShop. All rights Reserved.</p>
+        </div>
+    </footer>
+
+    <script src="storage.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrape@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
+    <script>
+        const orderItems = document.getElementById("orderItems");
+        const itemCount = document.getElementById("itemCount");
+        const subtotal = document.getElementById("subtotal");
+        const shipping = document.getElementById("shipping");
+        const grandTotal = document.getElementById("grandTotal");
+        const checkoutForm = document.getElementById("checkoutForm");
+        const successBox = document.getElementById("successBox");
+
+        const shippingCost = 15.00;
+
+        function getCart(){
+            return JSON.parse(localStorage.getItem("cart")) || [];
+        }
+
+        function renderCheckoutSummary(){
+            const cart = getCart();
+            orderItems.innerHTML = "";
+
+            if (cart.length === 0) {
+                orderItems.innerHTML =`
+                <div class="allert alert-warning mb-0">
+                    Your cart is empty. Please add products before checkout.
+                </div>
+            `;
+            itemCount.textContent = "0";
+            subtotal.textContent = "$0.00";
+            grandTotal.textContent = "$0.00";
+            checkoutForm.querySelector("button[type='submit']").disabled = true;
+            return;
+            }
+
+            let totalItems = 0;
+            let subtotalAmount = 0;
+
+            cart.forEach(item => {
+                const itemTotal = item.price * item.quantity;
+                totalItems += item.quantity;
+                subtotalAmount += itemTotal;
+
+                const itemRow = document.createElement("div");
+                itemRow.className = "product-row d-flex justify-content-between align-items-start";
+                itemRow.innerHTML =`
+                    <div>
+                        <h6 class="mb-1"${item.name}</h6>
+                            <small class="text-muted">Quantity: ${item.quantity}</small>
+                    </div>
+                    <div class="fx-semibold">$${itemTotal.toFixed(2)}</div>
+                `;
+                orderItems.appendChild(itemRow);
+            });
+
+            itemCount.textContent = totalItems;
+            subtotal.textContent = "$" + subtotalAmount.toFixed(2);
+            shipping.textContent = "$" + shippingCost.toFixed(2);
+            grandTotal.textContent = "$" + (subtotalAmount + shippingCost).toFixed(2);
+        }
+
+        checkoutForm.addEventListener("submit", function(event) {
+            event.preventDefault();
+
+            if (!checkoutForm.checkValidity()){
+                checkoutForm.reportValidity();
+                return;
+            }
+
+            const cart = getCart();
+            if (cart.length === 0) {
+                alert("Your cart is empty.");
+                return;
+            }
+
+            const orderData = {
+                firstName: document.getElementById("firstName").value.trim(),
+                lastName: document.getElementById("lastName").value.trim(),
+                email: document.getElementById("email").value.trim(),
+                phone: document.getElementById("phone").value.trim(),
+                address: document.getElementById("address").value.trim(),
+                city: document.getElementById("city").value.trim(),
+                province: document.getElementById("province").value.trim(),
+                postal: document.getElementById("postal").value.trim(),
+                paymentMethod: document.getElementById("paymentMethod").value.trim(),
+                items: cart
+            };
+
+            localStorage.setItem("lastOrder", JSON.stringify(orderData));
+            localStorage.removeItem("cart");
+
+            checkoutForm.style.display = "none";
+            successBox.style.display = "block";
+
+            renderCheckoutSummary();
+        });
+
+        renderCheckoutSummary();
+    </script>
+    </div>
+</body>
+</html>

@@ -1,0 +1,330 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SlothShop - Register</title>
+
+     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrape@5.3.3/dist/css/bootstrape.min.css">
+
+     <style>
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            background-color: #f8f9fa;
+        }
+
+        .sidebar{
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 240px;
+            height: 100vh;
+            background-color: #212519;
+            color: white;
+            padding-top: 20px;
+            z-index: 1000;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .sidebar-header{
+            font-size: 1.6rem;
+            font-weight: bold;
+            text-align: center;
+            padding: 15px;
+            border-bottom: 1px solid #444;
+        }
+
+        .sidebar-links{
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            margin-top: 20px;
+        }
+
+        .sidebar-links li{
+            width: 100%;
+        }
+
+        .sidebar-links a{
+            display: block;
+            padding: 12px 20px;
+            color: #ddd;
+            text-decoration: none;
+            transition: 0.3s;
+        }
+
+        .sidebar-links a:hover{
+            background-color: #0d6efd;
+            color: white;
+        }
+
+        .main-content{
+            margin-left: 240px;
+            padding: 20px;
+        }
+
+        .page-header {
+            min-height: 80hv;
+            background: linear-gradient(rgba(0,0,0,0.55)), rgba(0,0,0,0.55);
+            color: white;
+            padding: 70px 20px;
+            align-items: center;
+        }
+
+        .register-section{
+            padding: 60px 0;
+        }
+
+        .register-box{
+            background: white;
+            border-radius: 12px;
+            padding: 30px;
+            box-shadow: 0 2px 12px rgba(0,0,0,0.08);
+        }
+
+        .register-side-box{
+            background: linear-gradient(135deg, #198754, #146c43);
+            color: white;
+            border-radius: 12px;
+            padding: 30px;
+            min-height: 100%;
+        }
+
+        .form-text-link{
+            text-decoration: none;
+        }
+
+        .form-text-link:hover{
+            text-decoration: underline;
+        }
+
+        footer{
+            background-color: #212519;
+            color: white;
+            padding: 30px 20px;
+            margin-top: 50px; 
+        }
+
+        .footer-link{
+            color: #1b0ceb;
+            text-decoration: none;
+        }
+
+        .footer-link:hover{
+            color: white;
+        }
+
+         @media (max-width: 768px){
+            .sidebar{
+                width: 200px;
+            }
+
+            .main-content{
+                max-width: 200px;
+            }
+
+            .page-header{
+                max-width: 200px;
+            }
+
+            footer{
+                max-width: 200px;
+            }
+        }
+     </style>
+</head>
+<body>
+    <nav class="sidebar">
+        <div class="side-header">
+            SlothShop
+        </div>
+
+        <ul class="sidebar-links">
+            <li class="nav-item"><a href="Index.html">Home</a></li>
+                    <li ><a href="products.html">Products</a></li>
+                    <li ><a href="cart.html">Cart</a></li>
+                    <li ><a href="checkout.html">Checkout</a></li>
+                    <li ><a href="login.html">Login</a></li>
+                    <li ><a href="register.html">Register</a></li>
+                    <li ><a href="profile.html">Profile</a></li>
+                    <li ><a href="about.html">About</a></li>
+                    <li ><a href="contact.html">Contact</a></li>
+        </ul>
+    </nav>
+
+    <div class="main-content">
+        <section class="page-header">
+        <div class="container">
+            <h1 class="fw-bold">Create your Account</h1>
+            <p class="mb-0">Register to save your profile and enjoy a better shopping experience</p>
+        </div>
+    </section>
+
+    <section class="register-section">
+        <div class="container">
+            <div class="row g-4 align-items-strech justify-content-center">
+
+                <div class="col-lg-5">
+                    <div class="register-box">
+                        <h3 class="mb-4">Sign Up</h3>
+
+                        <div id="messageBox"></div>
+
+                        <form id="registerForm" novalidate>
+                            <div class="mb-3">
+                                <label for="fullName" class="form-label">Full Name</label>
+                                <input type="text" class="form-control" id="fullName" placeholder="Enter your full Name">
+                                <div class="invalid-feedback">
+                                    Please enter your full name.
+                                </div>
+                            </div>
+
+                            <div class="mb-3">
+                                <label for="email" class="form-label">Email Address</label>
+                                <input type="email" class="form-control" id="email" placeholder="Enter your Email">
+                                <div class="invalid-feedback">
+                                    Please enter a valid email address.
+                                </div>
+                            </div>
+
+                            <div class="mb-3">
+                                <label for="password" class="form-label">|Password</label>
+                                <input type="password" class="form-control" id="email" placeholder="Enter your password">
+                                <div class="invalid-feedback">
+                                    Password must be at least 6 characters long.
+                                </div>
+                            </div>
+
+                            <div class="mb-3">
+                                <label for="confirmPassword" class="form-label">Confirm Password</label>
+                                <input type="form-check-label" class="form-control" id="confirmPassword" placeholder="Confirm your password">
+                                <div class="invalid-feedback">
+                                    Please confirm your password.
+                                </div>
+                            </div>
+
+                            <div class="mb-3 form-check">
+                                <input type="checkbox" class="form-check-input" id="termsCheck" required>
+                                <label class="form-check-label" for="termsCheck">I agree to terms and conditions</label>
+                                <div class="invalid-feedback">
+                                    You must agree before registering.
+                                </div>
+                            </div>
+
+                            <button type="submit" class="btn btn-success w-100">Register</button>
+                        </form>
+
+                        <div class="text-center mt-4">
+                            <p class="mb-1">Already have an account?</p>
+                            <a href="login.html" class="form-text-link">Login here</a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-lg-5">
+                    <div class="register-side-box d-flex flex-column justify-content-center">
+                        <h3 class="mb-3">Join SlothShop</h3>
+                        <p>
+                            Create ypur account to manage orders, save your profile information, and enjoy a smoother shopping experience.
+                        </p>
+                        <ul class="mb-0">
+                            <li class="mb-2">Quick and easy registration</li>
+                            <li class="mb-2">Save your account details locally</li>
+                            <li class="mb-2">Access your profile anytime</li>
+                            <li>Start shopping with a personalized experience</li>
+                        </ul>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <div class="row text-center text-md-start">
+                <div class="col-md-4 mb-3">
+                     <h5>Sloth shop</h5>
+                    <p>Your trusted online store for fashion, electronics, and more.</p>
+                </div>
+
+                <div class="col-md-4 mb-3">
+                        <h5>Quick Links</h5>
+                        <p><a href="Index.html" class="footer-link">Home</a></p>
+                        <p><a href="products.html" class="footer-link">Products</a></p>
+                        <p><a href="about.html" class="footer-link">About</a></p>
+                        <p><a href="contact.html" class="footer-link">Contact</a></p>
+                </div>
+
+                <div class="col-md-4 mb-3">
+                        <h5>Contacts</h5>
+                        <p>Email: support@slothshop.com</p>
+                        <p>Phone: +1 234 567 890</p>
+                        <p>Loction: Montreal, Canada</p>
+                </div>
+            </div>
+            <hr class="border-light">
+            <p class="text-center mb-0">&copy; 2026 SlothShop. All rights Reserved.</p>
+        </div>
+    </footer>
+
+    <script src="storage.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrape@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
+    <script>
+        const registerForm = document.getElementById("registerForm");
+        const fullNameInput = document.getElementById("fullName");
+        const emailInput = document.getElementById("email");
+        const passwordInput = document.getElementById("password");
+        const confirmPasswordInput = document.getElementById("confirmPassword");
+        const messageBox = document.getElementById(messageBox);
+
+        function showMessage(type, text){
+            messageBox.innerHTML = `
+                <div class="alert alert-${type}" role="alert">
+                    ${text}
+                </div>
+            `;
+        }
+
+        registerForm.addEventListener("submit", function(event) {
+            event.preventDefault();
+
+            if (!registerForm.checkValidity()){
+                registerForm.classList.add("was-validated");
+                return;
+            }
+
+            const fullName = fullNameInput.value.trim();
+            const email = emailInput.value.trim();
+            const password = passwordInput.value.trim();
+            const confirmPassword = confirmPasswordInput.value.trim();
+
+            if (password !== confirmPassword){
+                showMessage("danger", "Passwords do not match.");
+                confirmPassword.focus();
+                return;
+            }
+
+            const registeredUser = {
+                name: fullName,
+                email: email,
+                password: password
+            };
+
+            localStorage.setItem("registeredUser", JSON.stringify(registeredUser));
+
+            showMessage("success", "Registration successful, redirecting to login...");
+
+            registerForm.reset();
+            registerForm.classList.remove("was-validated");
+
+            setTimeout(function() {
+                window.location.href = "login.html";
+            }, 1500);
+        });
+    </script>
+    </div>
+</body>
+</html>

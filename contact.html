@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SlothShop - Contact</title>
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrape@5.3.3/dist/css/bootstrape.min.css">
+
+    <style>
+         body {
+            font-family: Arial, Helvetica, sans-serif;
+        }
+
+        .sidebar{
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 240px;
+            height: 100vh;
+            background-color: #212519;
+            color: white;
+            padding-top: 20px;
+            z-index: 1000;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .sidebar-header{
+            font-size: 1.6rem;
+            font-weight: bold;
+            text-align: center;
+            padding: 15px;
+            border-bottom: 1px solid #444;
+        }
+
+        .sidebar-links{
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            margin-top: 20px;
+        }
+
+        .sidebar-links li{
+            width: 100%;
+        }
+
+        .sidebar-links a{
+            display: block;
+            padding: 12px 20px;
+            color: #ddd;
+            text-decoration: none;
+            transition: 0.3s;
+        }
+
+        .sidebar-links a:hover{
+            background-color: #0d6efd;
+            color: white;
+        }
+
+        .main-content{
+            margin-left: 240px;
+            padding: 20px;
+        }
+
+        .page-header {
+            min-height: 80hv;
+            background: linear-gradient(rgba(0,0,0,0.55)), rgba(0,0,0,0.55);
+            color: white;
+            padding: 70px 20px;
+            align-items: center;
+        }
+
+        .contact-section{
+            padding: 60px 0;
+        }
+
+        .contact-box,
+        .info-card,
+        .map-box{
+            background: white;
+            border-radius: 12px;
+            padding: 30px;
+            box-shadow: 0 2px 12px rgba(0,0,0,0.08);
+            height: 100%;
+        }
+
+        .info-item{
+            margin-bottom: 20px;
+        }
+
+        .info-item h5{
+            margin-bottom: 8px;
+        }
+
+        .map-frame{
+            width: 100%;
+            height: 350px;
+            border: 0;
+            border-radius: 12px;
+        }
+
+        footer{
+            background-color: #212519;
+            color: white;
+            padding: 30px 20px;
+            margin-top: 50px; 
+        }
+
+        .footer-link{
+            color: #1b0ceb;
+            text-decoration: none;
+        }
+
+        .footer-link:hover{
+            color: white;
+        }
+
+         @media (max-width: 768px){
+            .sidebar{
+                width: 200px;
+            }
+
+            .main-content{
+                max-width: 200px;
+            }
+
+            .page-header{
+                max-width: 200px;
+            }
+
+            footer{
+                max-width: 200px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <nav class="sidebar">
+        <div class="side-header">
+            SlothShop
+        </div>
+
+        <ul class="sidebar-links">
+            <li class="nav-item"><a href="Index.html">Home</a></li>
+                    <li ><a href="products.html">Products</a></li>
+                    <li ><a href="cart.html">Cart</a></li>
+                    <li ><a href="checkout.html">Checkout</a></li>
+                    <li ><a href="login.html">Login</a></li>
+                    <li ><a href="register.html">Register</a></li>
+                    <li ><a href="profile.html">Profile</a></li>
+                    <li ><a href="about.html">About</a></li>
+                    <li ><a href="contact.html">Contact</a></li>
+        </ul>
+    </nav>
+
+    <div class="main-content">
+        <section class="page-header">
+        <div class="container">
+            <h1 class="fw-bold">Contact Us</h1>
+            <p class="mb-0">We would love to hear from you, send us a message anytime.</p>
+        </div>
+    </section>
+
+    <section class="contact-section">
+        <div class="container">
+            <div class="row g-4">
+
+                <div class="col-lg-7">
+                    <div class="contact-box">
+                        <h3 class="mb-4">Send a Message</h3>
+
+                        <div id="messageBox"></div>
+
+                        <form id="contactForm" novalidate>
+                            <div class="row g-3">
+                                <div class="col-md-6">
+                                    <label for="fullName" class="form-label">Full Name</label>
+                                    <input type="text" class="form-control" id="fullName" required>
+                                    <div class="invalid-feedback">Please enter your full name.</div>
+                                </div>
+
+                                <div class="col-md-6">
+                                    <label for="email" class="form-label">Email Address</label>
+                                    <input type="email" class="form-control" id="email" required>
+                                    <div class="invalid-feedback">Please enter a valid email address.</div>
+                                </div>
+
+                                <div class="col-md-6">
+                                    <label for="subject" class="form-label">Subject</label>
+                                    <textarea class="form-control" id="subject" required></textarea>
+                                    <div class="invalid-feedback">Please enter your subject.</div>
+                                </div>
+
+                                <div class="col-md-6">
+                                    <label for="subject" class="form-label">Subject</label>
+                                    <textarea class="form-control" id="message" rows="6" required></textarea>
+                                    <div class="invalid-feedback">Please enter your message.</div>
+                                </div>
+
+                                <div class="col-12">
+                                    <button type="submit" class="btn btn-primary w-100">Send message</button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+
+                <div class="col-lg-5">
+                    <div class="info-box mb-4">
+                        <h3 class="mb-4">Contact Information</h3>
+
+                        <div class="info-item">
+                            <h5>Email</h5>
+                            <p class="mb-0">Support@slothshop.com</p>
+                        </div>
+
+                        <div class="info-item">
+                            <h5>Phone</h5>
+                            <p class="mb-0">+1 234 567 890</p>
+                        </div>
+
+                        <div class="info-item">
+                            <h5>Address</h5>
+                            <p class="mb-0">123 Shopping Street, Montreal, Canada</p>
+                        </div>
+
+                        <div class="info-item">
+                            <h5>Business Hours</h5>
+                            <p class="mb-0">Monday - Friday: 9:00 AM - 6:00 PM</p>
+                        </div>
+                    </div>
+
+                    <div class="map-box">
+                        <h3 class="mb-4">Our Location</h3>
+                        <iframe src="https://www.google.com/maps?q=Montreal,Canada&output=embed" class="map-frame" allowfullscreen="" loading="lazy"></iframe>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+     <footer>
+        <div class="container">
+            <div class="row text-center text-md-start">
+                <div class="col-md-4 mb-3">
+                     <h5>Sloth shop</h5>
+                    <p>Your trusted online store for fashion, electronics, and more.</p>
+                </div>
+
+                <div class="col-md-4 mb-3">
+                        <h5>Quick Links</h5>
+                        <p><a href="Index.html" class="footer-link">Home</a></p>
+                        <p><a href="products.html" class="footer-link">Products</a></p>
+                        <p><a href="about.html" class="footer-link">About</a></p>
+                        <p><a href="contact.html" class="footer-link">Contact</a></p>
+                </div>
+
+                <div class="col-md-4 mb-3">
+                        <h5>Contacts</h5>
+                        <p>Email: support@slothshop.com</p>
+                        <p>Phone: +1 234 567 890</p>
+                        <p>Loction: Montreal, Canada</p>
+                </div>
+            </div>
+            <hr class="border-light">
+            <p class="text-center mb-0">&copy; 2026 SlothShop. All rights Reserved.</p>
+        </div>
+    </footer>
+
+    <script src="storage.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrape@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
+    <script>
+        const contactForm = document.getElementById("contactForm");
+        const messageBox = document.getElementById("messageBox");
+
+        function showMessage(type, text){
+            messageBox.innerHTML = `
+                <div class="alert alert-${type}" role="alert">
+                    ${text}
+                </div>
+            `;
+        }
+
+        contactForm.addEventListener("submit", function(event) {
+            event.preventDefault();
+
+            if (!registerForm.checkValidity()){
+                registerForm.classList.add("was-validated");
+                return;
+            }
+
+            const contactMessage = {
+                fullName: document.getElementById("fullName").value.trim(),
+                email: document.getElementById("email").value.trim(),
+                subject: document.getElementById("subject").value.trim(),
+                message: document.getElementById("message").value.trim(),
+                datesent: new Date().toLocaleDateString()
+            };
+
+            let messages = JSON.parse(localStorage.getItem("contactMessages")) || [];
+            messages.push(contactMessage);
+            localStorage.setItem("contactMessage", JSON.stringify(messages));
+
+            showMessage("success", "Your message has been sent successfully.");
+
+            contactForm.reset();
+            contactForm.classList.remove("was-validated");
+        });
+    </script>
+    </div>
+</body>
+</html>
